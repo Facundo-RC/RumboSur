@@ -1,0 +1,304 @@
+[
+  {
+    "id": "florianopolis",
+    "destino": "Florianópolis",
+    "pais": "Brasil",
+    "region": "Sudamérica",
+    "tipo": "playa",
+    "titulo": "Florianópolis en temporada",
+    "resumen": "Siete noches en la isla de las 42 playas, con traslados y pensión con desayuno.",
+    "noches": 7,
+    "precio": 890,
+    "colores": ["#0e7c86", "#f2b84b"],
+    "destacado": true,
+    "incluye": ["Aéreo Montevideo – Florianópolis", "7 noches en hotel 3★ en Canasvieiras", "Desayuno diario", "Traslados aeropuerto – hotel", "Asistencia al viajero"],
+    "itinerario": [
+      "Llegada y traslado al hotel. Tarde libre en la playa.",
+      "Excursión a Praia do Campeche y Lagoa da Conceição.",
+      "Días libres para recorrer el norte de la isla.",
+      "Traslado al aeropuerto y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-01-09", "alta": true },
+      { "fecha": "2027-02-06", "alta": true },
+      { "fecha": "2027-03-13", "alta": false }
+    ]
+  },
+  {
+    "id": "bariloche",
+    "destino": "Bariloche",
+    "pais": "Argentina",
+    "region": "Sudamérica",
+    "tipo": "nieve",
+    "titulo": "Bariloche y Cerro Catedral",
+    "resumen": "Seis noches frente al Nahuel Huapi con pase de ski de tres días incluido.",
+    "noches": 6,
+    "precio": 1150,
+    "colores": ["#28507a", "#d9e7f2"],
+    "destacado": true,
+    "incluye": ["Aéreo con escala en Buenos Aires", "6 noches en hotel 4★ con vista al lago", "Media pensión", "Pase de ski por 3 días", "Traslados"],
+    "itinerario": [
+      "Llegada a Bariloche y paseo por el Centro Cívico.",
+      "Tres días de nieve en Cerro Catedral.",
+      "Circuito Chico y Cerro Campanario.",
+      "Día libre y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-07-03", "alta": true },
+      { "fecha": "2027-07-17", "alta": true },
+      { "fecha": "2027-08-21", "alta": false }
+    ]
+  },
+  {
+    "id": "machu-picchu",
+    "destino": "Cusco y Machu Picchu",
+    "pais": "Perú",
+    "region": "Sudamérica",
+    "tipo": "aventura",
+    "titulo": "Cusco, Valle Sagrado y Machu Picchu",
+    "resumen": "Ocho noches entre ruinas incas, mercados andinos y el tren a Aguas Calientes.",
+    "noches": 8,
+    "precio": 1690,
+    "colores": ["#5a7d3a", "#e0a458"],
+    "destacado": true,
+    "incluye": ["Aéreo Montevideo – Lima – Cusco", "8 noches en hoteles 3★ y 4★", "Tren a Aguas Calientes", "Entrada y guía en Machu Picchu", "Excursión al Valle Sagrado"],
+    "itinerario": [
+      "Llegada a Cusco y día de aclimatación.",
+      "City tour: Sacsayhuamán, Qorikancha y San Blas.",
+      "Valle Sagrado: Pisac y Ollantaytambo.",
+      "Tren y visita guiada a Machu Picchu.",
+      "Regreso a Cusco y vuelo de vuelta."
+    ],
+    "salidas": [
+      { "fecha": "2027-04-10", "alta": false },
+      { "fecha": "2027-06-12", "alta": true },
+      { "fecha": "2027-09-18", "alta": false }
+    ]
+  },
+  {
+    "id": "cartagena",
+    "destino": "Cartagena de Indias",
+    "pais": "Colombia",
+    "region": "Caribe",
+    "tipo": "playa",
+    "titulo": "Cartagena e Islas del Rosario",
+    "resumen": "Ciudad amurallada, atardeceres en Getsemaní y un día de lancha por las islas.",
+    "noches": 7,
+    "precio": 1240,
+    "colores": ["#c2410c", "#22a6b3"],
+    "destacado": false,
+    "incluye": ["Aéreo con escala en Bogotá", "7 noches en hotel boutique en el centro histórico", "Desayuno diario", "Excursión a Islas del Rosario", "Traslados"],
+    "itinerario": [
+      "Llegada y caminata por la ciudad amurallada.",
+      "Castillo de San Felipe y barrio Getsemaní.",
+      "Día completo en Islas del Rosario.",
+      "Días libres y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-03-20", "alta": false },
+      { "fecha": "2027-07-10", "alta": true },
+      { "fecha": "2027-10-02", "alta": false }
+    ]
+  },
+  {
+    "id": "madrid-barcelona",
+    "destino": "Madrid y Barcelona",
+    "pais": "España",
+    "region": "Europa",
+    "tipo": "ciudad",
+    "titulo": "España clásica: Madrid y Barcelona",
+    "resumen": "Diez noches entre el Prado, la Gran Vía, la Sagrada Familia y el Barrio Gótico.",
+    "noches": 10,
+    "precio": 2890,
+    "colores": ["#9b2226", "#ee9b00"],
+    "destacado": true,
+    "incluye": ["Aéreo directo Montevideo – Madrid", "Tren de alta velocidad Madrid – Barcelona", "10 noches en hoteles 4★ céntricos", "Desayuno diario", "Entradas al Prado y la Sagrada Familia"],
+    "itinerario": [
+      "Llegada a Madrid. Paseo por la Puerta del Sol y la Plaza Mayor.",
+      "Museo del Prado, Retiro y Palacio Real.",
+      "Excursión opcional a Toledo.",
+      "Tren a Barcelona. Ramblas y Barrio Gótico.",
+      "Sagrada Familia, Park Güell y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-04-24", "alta": false },
+      { "fecha": "2027-06-05", "alta": true },
+      { "fecha": "2027-09-25", "alta": false }
+    ]
+  },
+  {
+    "id": "punta-cana",
+    "destino": "Punta Cana",
+    "pais": "República Dominicana",
+    "region": "Caribe",
+    "tipo": "playa",
+    "titulo": "Punta Cana all inclusive",
+    "resumen": "Siete noches en resort frente al mar con todo incluido, ideal para descansar.",
+    "noches": 7,
+    "precio": 1790,
+    "colores": ["#0096c7", "#80ed99"],
+    "destacado": false,
+    "incluye": ["Aéreo con escala en Panamá", "7 noches en resort 5★", "Sistema todo incluido", "Traslados", "Asistencia al viajero"],
+    "itinerario": [
+      "Llegada y check-in en el resort.",
+      "Días libres en la playa de Bávaro.",
+      "Excursión opcional a Isla Saona.",
+      "Regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-02-13", "alta": true },
+      { "fecha": "2027-05-15", "alta": false },
+      { "fecha": "2027-11-06", "alta": false }
+    ]
+  },
+  {
+    "id": "salta-jujuy",
+    "destino": "Salta y Jujuy",
+    "pais": "Argentina",
+    "region": "Sudamérica",
+    "tipo": "aventura",
+    "titulo": "Norte argentino: Salta y Quebrada de Humahuaca",
+    "resumen": "Cerros de colores, salinas y peñas folclóricas en seis noches por el noroeste.",
+    "noches": 6,
+    "precio": 780,
+    "colores": ["#b5523b", "#f4a261"],
+    "destacado": false,
+    "incluye": ["Aéreo vía Buenos Aires", "6 noches en hoteles 3★", "Desayuno diario", "Excursiones a Cafayate y Humahuaca", "Visita a Salinas Grandes"],
+    "itinerario": [
+      "Llegada a Salta y city tour.",
+      "Quebrada de las Conchas y Cafayate.",
+      "Purmamarca, Cerro de los Siete Colores y Salinas Grandes.",
+      "Humahuaca, Tilcara y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-04-03", "alta": false },
+      { "fecha": "2027-07-24", "alta": true },
+      { "fecha": "2027-10-16", "alta": false }
+    ]
+  },
+  {
+    "id": "nueva-york",
+    "destino": "Nueva York",
+    "pais": "Estados Unidos",
+    "region": "Norteamérica",
+    "tipo": "ciudad",
+    "titulo": "Nueva York en seis noches",
+    "resumen": "Manhattan a pie: Central Park, Brooklyn Bridge, museos y un musical en Broadway.",
+    "noches": 6,
+    "precio": 2190,
+    "colores": ["#1d3557", "#e63946"],
+    "destacado": false,
+    "incluye": ["Aéreo con escala en Miami", "6 noches en hotel 3★ en Midtown", "City pass con 5 atracciones", "Entrada a un musical de Broadway", "Traslados"],
+    "itinerario": [
+      "Llegada y paseo por Times Square.",
+      "Central Park, Museo Metropolitano y Quinta Avenida.",
+      "Estatua de la Libertad, Wall Street y Brooklyn Bridge.",
+      "High Line, Chelsea Market y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-05-08", "alta": false },
+      { "fecha": "2027-09-11", "alta": false },
+      { "fecha": "2027-12-11", "alta": true }
+    ]
+  },
+  {
+    "id": "torres-del-paine",
+    "destino": "Torres del Paine",
+    "pais": "Chile",
+    "region": "Sudamérica",
+    "tipo": "aventura",
+    "titulo": "Patagonia chilena: Torres del Paine",
+    "resumen": "Cinco noches de trekking guiado entre glaciares, lagos turquesa y el macizo del Paine.",
+    "noches": 5,
+    "precio": 1490,
+    "colores": ["#2a6f97", "#a3b18a"],
+    "destacado": false,
+    "incluye": ["Aéreo Montevideo – Santiago – Punta Arenas", "5 noches en refugios y hostería", "Pensión completa en el parque", "Guía de montaña", "Entrada al parque nacional"],
+    "itinerario": [
+      "Llegada a Punta Arenas y traslado a Puerto Natales.",
+      "Trekking a la base de las Torres.",
+      "Navegación al glaciar Grey.",
+      "Mirador Cuernos y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-01-16", "alta": true },
+      { "fecha": "2027-03-06", "alta": false },
+      { "fecha": "2027-11-20", "alta": false }
+    ]
+  },
+  {
+    "id": "roma-florencia",
+    "destino": "Roma y Florencia",
+    "pais": "Italia",
+    "region": "Europa",
+    "tipo": "ciudad",
+    "titulo": "Italia: Roma, Florencia y la Toscana",
+    "resumen": "Nueve noches de arte, historia y cocina italiana, con un día en los viñedos de Chianti.",
+    "noches": 9,
+    "precio": 2750,
+    "colores": ["#6b4226", "#e9c46a"],
+    "destacado": false,
+    "incluye": ["Aéreo con escala en Madrid", "9 noches en hoteles 4★", "Desayuno diario", "Coliseo y Museos Vaticanos con guía", "Excursión a Chianti con degustación"],
+    "itinerario": [
+      "Llegada a Roma y paseo por Trastevere.",
+      "Coliseo, Foro Romano y Fontana di Trevi.",
+      "Museos Vaticanos y Capilla Sixtina.",
+      "Tren a Florencia: Duomo y Ponte Vecchio.",
+      "Chianti y regreso."
+    ],
+    "salidas": [
+      { "fecha": "2027-05-22", "alta": false },
+      { "fecha": "2027-08-07", "alta": true },
+      { "fecha": "2027-10-09", "alta": false }
+    ]
+  },
+  {
+    "id": "valle-nevado",
+    "destino": "Valle Nevado",
+    "pais": "Chile",
+    "region": "Sudamérica",
+    "tipo": "nieve",
+    "titulo": "Santiago y Valle Nevado",
+    "resumen": "Cinco noches de nieve a una hora de Santiago, con equipo de ski incluido.",
+    "noches": 5,
+    "precio": 1380,
+    "colores": ["#3a506b", "#bde0fe"],
+    "destacado": false,
+    "incluye": ["Aéreo directo a Santiago", "2 noches en Santiago y 3 en Valle Nevado", "Pase de ski y alquiler de equipo", "Traslados a la montaña", "Media pensión en la montaña"],
+    "itinerario": [
+      "Llegada a Santiago y paseo por Bellavista.",
+      "Subida a Valle Nevado.",
+      "Dos días de ski.",
+      "Regreso a Santiago y vuelo."
+    ],
+    "salidas": [
+      { "fecha": "2027-07-10", "alta": true },
+      { "fecha": "2027-08-14", "alta": false },
+      { "fecha": "2027-09-04", "alta": false }
+    ]
+  },
+  {
+    "id": "colonia-carmelo",
+    "destino": "Colonia y Carmelo",
+    "pais": "Uruguay",
+    "region": "Uruguay",
+    "tipo": "escapada",
+    "titulo": "Escapada a Colonia y Carmelo",
+    "resumen": "Fin de semana en el barrio histórico y una tarde de bodega en Carmelo.",
+    "noches": 2,
+    "precio": 260,
+    "colores": ["#386641", "#f2e8cf"],
+    "destacado": false,
+    "incluye": ["Bus ida y vuelta desde Montevideo", "2 noches en posada del barrio histórico", "Desayuno", "Visita a bodega con degustación"],
+    "itinerario": [
+      "Viaje a Colonia y recorrida por el barrio histórico.",
+      "Traslado a Carmelo y visita a bodega.",
+      "Mañana libre y regreso a Montevideo."
+    ],
+    "salidas": [
+      { "fecha": "2027-03-27", "alta": false },
+      { "fecha": "2027-04-17", "alta": true },
+      { "fecha": "2027-10-23", "alta": false }
+    ]
+  }
+]

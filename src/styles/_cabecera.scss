@@ -1,0 +1,286 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.cabecera {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: background 0.45s $ease, border-color 0.45s $ease, backdrop-filter 0.45s $ease;
+
+  &--fija {
+    @include vidrio(0.74, 22px);
+    border-bottom-color: $linea;
+  }
+
+  &__progreso {
+    position: absolute;
+    inset: auto 0 -1px 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba($solar, 0.2), $solar);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    opacity: 0.9;
+  }
+
+  &__barra {
+    height: $alto-cabecera;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  &__acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+
+    @include desde(lg) {
+      gap: 0.9rem;
+    }
+  }
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: $glacier;
+
+  &__sello {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid $linea-fuerte;
+    border-radius: 50%;
+    color: $solar;
+    transition: transform 0.7s $ease, border-color 0.4s $ease;
+  }
+
+  &__texto {
+    font-family: $font-display;
+    font-size: 1.32rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+
+    em {
+      font-style: normal;
+      color: $solar;
+    }
+  }
+
+  &:hover &__sello {
+    transform: rotate(120deg);
+    border-color: $solar;
+  }
+}
+
+.nav-principal {
+  display: none;
+
+  @include desde(lg) {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  &__enlace {
+    position: relative;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $hielo-suave;
+    padding-block: 0.45rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: $solar;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      transition: transform 0.45s $ease;
+    }
+
+    &:hover {
+      color: $glacier;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &.is-activo {
+      color: $glacier;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.moneda {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid $linea;
+  border-radius: 999px;
+  padding: 2px;
+  background: rgba(242, 245, 247, 0.03);
+
+  button {
+    border: 0;
+    background: none;
+    color: $muted;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.34rem 0.6rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s $ease, color 0.25s $ease;
+
+    &[aria-pressed="true"] {
+      background: $glacier;
+      color: $ink;
+    }
+
+    &:hover:not([aria-pressed="true"]) {
+      color: $glacier;
+    }
+  }
+}
+
+.carrito-icono {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid $linea;
+  border-radius: 50%;
+  color: $glacier;
+  transition: border-color 0.3s $ease, color 0.3s $ease, background 0.3s $ease;
+
+  &:hover {
+    border-color: $solar;
+    color: $solar;
+    background: rgba($solar, 0.06);
+  }
+
+  &__contador {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 4px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: $solar;
+    color: $ink;
+    font-size: 0.64rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.menu-boton {
+  display: grid;
+  gap: 5px;
+  place-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid $linea;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.3s $ease;
+
+  span {
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: $glacier;
+    transition: transform 0.3s $ease, opacity 0.3s $ease;
+  }
+
+  &:hover {
+    border-color: $solar;
+  }
+
+  &--abierto span:first-child {
+    transform: translateY(3px) rotate(45deg);
+  }
+
+  &--abierto span:last-child {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+
+  @include desde(lg) {
+    display: none;
+  }
+}
+
+.panel-movil {
+  position: fixed;
+  inset: $alto-cabecera 0 0 0;
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 1.5rem 2.5rem;
+  background: rgba($abyss, 0.97);
+  backdrop-filter: blur(24px);
+  animation: amanecer 0.42s $ease both;
+  overflow-y: auto;
+
+  &__enlaces {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__enlace {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.9rem;
+    border-bottom: 1px solid $linea;
+    font-family: $font-display;
+    font-size: 1.85rem;
+    color: $glacier;
+
+    small {
+      font-family: $font-mono;
+      font-size: 0.7rem;
+      color: $muted;
+      letter-spacing: 0.1em;
+    }
+
+    &.is-activo {
+      color: $solar;
+    }
+  }
+
+  &__pie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.78rem;
+    color: $muted;
+  }
+
+  @include desde(lg) {
+    display: none;
+  }
+}

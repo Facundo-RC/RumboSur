@@ -1,0 +1,170 @@
+@use "tokens" as *;
+
+// El movimiento es parte del relato: el contenido amanece, las fotos se descubren
+// como un horizonte que sube y las letras del título respiran con luz solar.
+
+@keyframes amanecer {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes descubrir {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes latido {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0.4);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes marquesina {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes onda-letra {
+  0%,
+  22%,
+  100% {
+    color: $glacier;
+  }
+  9% {
+    color: $solar;
+  }
+}
+
+@keyframes subir-aviso {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// --- Reveal on scroll ---------------------------------------------------------
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.9s $ease, transform 1.1s $ease;
+  transition-delay: var(--retraso, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal--izquierda {
+  transform: translate3d(-34px, 0, 0);
+}
+
+.reveal--derecha {
+  transform: translate3d(34px, 0, 0);
+}
+
+.reveal--escala {
+  transform: scale(0.94);
+}
+
+// Descubrimiento por máscara: la imagen sube como el sol sobre el horizonte.
+.reveal--mascara {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.2s $ease;
+  transition-delay: var(--retraso, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+// --- Marquesina infinita ------------------------------------------------------
+.marquesina {
+  overflow: hidden;
+  border-block: 1px solid $linea;
+  padding-block: 1rem;
+  background: rgba(242, 245, 247, 0.015);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+
+  &__pista {
+    display: flex;
+    width: max-content;
+    animation: marquesina 42s linear infinite;
+  }
+
+  &__grupo {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.2rem;
+    padding-inline: 1.6rem;
+    font-family: $font-display;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: rgba(242, 245, 247, 0.55);
+    white-space: nowrap;
+
+    &::after {
+      content: "✦";
+      color: $solar;
+      font-size: 0.7rem;
+    }
+  }
+
+  &:hover &__pista {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal--mascara {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  .marquesina__pista {
+    animation: none;
+  }
+}

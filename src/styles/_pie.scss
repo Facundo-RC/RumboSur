@@ -1,0 +1,141 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.pie {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 7vw, 6rem) 2rem;
+  border-top: 1px solid $linea;
+  background: radial-gradient(70% 60% at 50% 0%, rgba($solar, 0.08), transparent 70%), $abyss-2;
+
+  &__cierre {
+    text-align: center;
+    padding-bottom: clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid $linea;
+  }
+
+  &__titulo {
+    font-size: clamp(2.4rem, 6.4vw, 4.8rem);
+    line-height: 0.95;
+    margin: 0.6rem auto 1.1rem;
+    max-width: 18ch;
+
+    em {
+      font-style: italic;
+      color: $solar;
+    }
+  }
+
+  &__texto {
+    max-width: 44ch;
+    margin: 0 auto 2rem;
+    color: $muted;
+  }
+
+  &__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+
+  &__columnas {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: 2.75rem;
+
+    @include desde(md) {
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__rotulo {
+    @include mayusculas(0.62rem);
+    color: $solar;
+    margin: 0 0 1rem;
+  }
+
+  &__lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.55rem;
+
+    a {
+      color: $muted;
+      font-size: 0.9rem;
+
+      &:hover {
+        color: $glacier;
+      }
+    }
+  }
+
+  &__texto-chico {
+    font-size: 0.88rem;
+    color: $muted;
+    max-width: 34ch;
+  }
+
+  &__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $linea;
+    font-size: 0.76rem;
+    color: rgba(242, 245, 247, 0.45);
+
+    a {
+      color: $hielo-suave;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      &:hover {
+        color: $solar;
+      }
+    }
+  }
+}
+
+// --- Aviso flotante -----------------------------------------------------------
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: 1.6rem;
+  z-index: 150;
+  transform: translateX(-50%);
+  pointer-events: none;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+
+  &__mensaje {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0;
+    padding: 0.8rem 1.25rem;
+    border: 1px solid rgba($solar, 0.45);
+    border-radius: 999px;
+    background: rgba($panel, 0.96);
+    backdrop-filter: blur(14px);
+    box-shadow: $sombra;
+    color: $glacier;
+    font-size: 0.88rem;
+    font-weight: 500;
+    animation: subir-aviso 0.4s $ease both;
+
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: $solar;
+      flex: 0 0 auto;
+    }
+  }
+}

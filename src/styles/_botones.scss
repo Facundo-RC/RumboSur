@@ -1,0 +1,158 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+// Botón firmado del sistema: bloque solar con divisor y flecha, herencia directa
+// del botón "View All" del hero. Se invierte a contorno al pasar el mouse.
+.boton-solar {
+  display: inline-flex;
+  align-items: stretch;
+  height: 54px;
+  border: 1px solid $solar;
+  border-radius: $radio-sm;
+  overflow: hidden;
+  background: $solar;
+  color: $ink;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.35s $ease, color 0.35s $ease, border-color 0.35s $ease;
+  cursor: pointer;
+  padding: 0;
+
+  &__texto {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 1.5rem;
+    white-space: nowrap;
+  }
+
+  &__divisor {
+    width: 1px;
+    background: currentColor;
+    opacity: 0.35;
+  }
+
+  &__flecha {
+    display: grid;
+    place-items: center;
+    width: 54px;
+
+    svg {
+      width: 17px;
+      height: 17px;
+      transition: transform 0.35s $ease;
+    }
+  }
+
+  &:hover {
+    background: transparent;
+    border-color: $solar;
+    color: $solar-claro;
+  }
+
+  &:hover &__flecha svg {
+    transform: translateX(5px);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  &--ancho {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &--chico {
+    height: 44px;
+
+    .boton-solar__flecha {
+      width: 44px;
+    }
+  }
+}
+
+// Acción secundaria: contorno de hielo.
+.boton-linea {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 54px;
+  padding-inline: 1.5rem;
+  border: 1px solid $linea-fuerte;
+  border-radius: $radio-sm;
+  background: transparent;
+  color: $glacier;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.3s $ease, color 0.3s $ease, background 0.3s $ease;
+
+  &:hover {
+    border-color: $glacier;
+    background: rgba(242, 245, 247, 0.06);
+    color: $glacier;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &--chico {
+    height: 44px;
+    padding-inline: 1rem;
+    font-size: 0.74rem;
+  }
+}
+
+.boton-texto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0;
+  border: 0;
+  background: none;
+  color: $muted;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.25s $ease;
+
+  &:hover {
+    color: $glacier;
+  }
+
+  &--peligro:hover {
+    color: $peligro;
+  }
+}
+
+// Enlace con flecha que se desliza.
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $solar;
+
+  svg {
+    transition: transform 0.35s $ease;
+  }
+
+  &:hover {
+    color: $solar-claro;
+
+    svg {
+      transform: translateX(5px);
+    }
+  }
+}

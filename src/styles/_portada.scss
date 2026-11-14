@@ -1,0 +1,240 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+// Portada: héroe centrado sobre el mar profundo con una franja de tres fotos que
+// se derrama por el borde inferior (el horizonte que sigue de largo).
+.portada {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: $alto-cabecera;
+  overflow: hidden;
+  background:
+    radial-gradient(58% 52% at 80% 2%, rgba($solar, 0.28), transparent 66%),
+    radial-gradient(62% 56% at 6% 0%, rgba($turquesa, 0.24), transparent 68%),
+    radial-gradient(70% 60% at 50% 108%, rgba($coral, 0.14), transparent 72%),
+    $abyss;
+
+  &__aurora {
+    position: absolute;
+    z-index: -1;
+    inset: -30% -15% auto -15%;
+    height: 80%;
+    background: radial-gradient(50% 50% at 50% 50%, rgba($solar, 0.3), transparent 70%),
+      radial-gradient(40% 40% at 28% 42%, rgba($turquesa, 0.26), transparent 70%),
+      radial-gradient(38% 38% at 72% 48%, rgba($coral, 0.2), transparent 70%);
+    filter: blur(70px);
+    animation: flotar 16s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  &__interior {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-block: clamp(1.5rem, 4vh, 3rem) clamp(1rem, 2.5vh, 2rem);
+  }
+
+  &__antetitulo {
+    @include mayusculas(0.66rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: $hielo-suave;
+    margin: 0;
+
+    span {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: $solar;
+    }
+  }
+
+  &__titulo {
+    font-size: clamp(2.6rem, min(7.4vw, 9.6vh), 6.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    margin: 0.9rem 0 0.9rem;
+    max-width: 18ch;
+
+    em {
+      display: block;
+      font-style: italic;
+      color: $solar;
+      font-size: 0.82em;
+      letter-spacing: -0.03em;
+    }
+  }
+
+  &__letra {
+    animation: onda-letra 6.5s linear infinite;
+    animation-delay: calc(var(--i, 0) * 0.075s);
+  }
+
+  &__bajada {
+    max-width: 52ch;
+    color: $hielo-suave;
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    margin-bottom: clamp(1.1rem, 2.5vh, 1.9rem);
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.6rem;
+    margin: 1.05rem 0 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(242, 245, 247, 0.5);
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &::before {
+        content: "";
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: $solar;
+      }
+    }
+  }
+
+  &__coords {
+    display: none;
+
+    @include desde(lg) {
+      display: flex;
+      position: absolute;
+      left: calc((100% - min(100% - 2rem, 1320px)) / 2 - 3.2rem);
+      top: 46%;
+      transform: rotate(180deg);
+      writing-mode: vertical-rl;
+      gap: 1rem;
+      font-family: $font-mono;
+      font-size: 0.64rem;
+      letter-spacing: 0.32em;
+      color: rgba(242, 245, 247, 0.42);
+      pointer-events: none;
+    }
+  }
+
+  &__galeria {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.4rem, 1vw, 0.9rem);
+    height: clamp(130px, 23vh, 280px);
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 42%;
+      background: linear-gradient(180deg, $abyss, transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+
+  &__foto {
+    position: relative;
+    height: calc(100% + 34px);
+    overflow: hidden;
+    background: $abyss-2;
+
+    &:nth-child(2) {
+      transform: translateY(clamp(10px, 3.4vw, 58px));
+    }
+  }
+
+  &__marco {
+    display: block;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+
+    img {
+      transition: transform 1.4s $ease;
+    }
+  }
+
+  &__foto:hover img {
+    transform: scale(1.07);
+  }
+}
+
+// --- Buscador de la portada ---------------------------------------------------
+.buscador-portada {
+  @include vidrio(0.5, 20px);
+  display: grid;
+  gap: 0.9rem;
+  width: min(100%, 900px);
+  padding: 1rem;
+  border-radius: $radio;
+  box-shadow: $sombra;
+  text-align: left;
+
+  @include desde(md) {
+    grid-template-columns: 1.4fr 0.9fr 1fr auto;
+    align-items: end;
+    padding: 0.85rem 0.85rem 0.85rem 1.1rem;
+  }
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+
+  span {
+    @include mayusculas(0.6rem);
+    color: $muted;
+  }
+
+  input,
+  select {
+    @include control;
+    padding: 0.72rem 0.9rem;
+    background: rgba(242, 245, 247, 0.03);
+  }
+
+  select {
+    appearance: none;
+    padding-right: 2.4rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%23a9cbd2' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  option {
+    background: $panel;
+    color: $glacier;
+  }
+
+  .boton-solar {
+    width: 100%;
+
+    @include desde(md) {
+      width: auto;
+      height: 46px;
+
+      .boton-solar__flecha {
+        width: 46px;
+      }
+    }
+  }
+}

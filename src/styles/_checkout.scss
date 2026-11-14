@@ -1,0 +1,292 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+.carrito-pagina {
+  padding-top: calc($alto-cabecera + clamp(2.5rem, 6vw, 4.5rem));
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+
+  &__grilla {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
+
+    @include desde(lg) {
+      grid-template-columns: minmax(0, 1fr) 420px;
+      align-items: start;
+    }
+  }
+}
+
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.item {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 96px minmax(0, 1fr);
+  padding: 0.85rem;
+  border: 1px solid $linea;
+  background: $panel;
+  transition: border-color 0.3s $ease;
+
+  @include desde(sm) {
+    grid-template-columns: 150px minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &:hover {
+    border-color: $linea-fuerte;
+  }
+
+  &__foto {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 2px;
+    background: $abyss-2;
+
+    img {
+      transition: transform 0.8s $ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__titulo {
+    font-family: $font-display;
+    font-size: 1.24rem;
+    line-height: 1.1;
+    margin: 0 0 0.25rem;
+  }
+
+  &__detalle {
+    margin: 0;
+    font-size: 0.8rem;
+    color: $muted;
+    line-height: 1.55;
+  }
+
+  &__acciones {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid $linea;
+
+    @include desde(sm) {
+      grid-column: auto;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      padding-top: 0;
+      border-top: 0;
+      gap: 0.35rem;
+    }
+  }
+
+  &__precio {
+    font-family: $font-mono;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+.items__pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $linea;
+}
+
+.items__total {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0;
+
+  span {
+    @include mayusculas(0.62rem);
+    color: $muted;
+  }
+
+  strong {
+    font-family: $font-display;
+    font-size: 1.85rem;
+    font-weight: 400;
+  }
+}
+
+// --- Formulario de reserva ----------------------------------------------------
+.formulario-reserva {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.5rem;
+  border: 1px solid $linea-fuerte;
+  background: linear-gradient(180deg, $panel 0%, $abyss-2 100%);
+  box-shadow: $sombra;
+
+  @include desde(lg) {
+    position: sticky;
+    top: $alto-cabecera + 24px;
+  }
+
+  &__titulo {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  &__nota {
+    margin: 0;
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: $muted;
+  }
+
+  &__fila {
+    display: grid;
+    gap: 0.9rem;
+
+    @include desde(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+// --- Confirmación -------------------------------------------------------------
+.confirmacion {
+  max-width: 620px;
+  margin-inline: auto;
+  text-align: center;
+  padding-block: clamp(1rem, 3vw, 2rem);
+
+  &__icono {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 1.5rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba($solar, 0.5);
+    border-radius: 50%;
+    background: rgba($solar, 0.1);
+    color: $solar;
+    animation: amanecer 0.7s $ease both;
+  }
+
+  &__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 1.75rem;
+  }
+}
+
+.codigo {
+  display: inline-block;
+  margin-block: 0.4rem 1rem;
+  padding: 0.35rem 1.1rem;
+  border: 1px solid rgba($solar, 0.4);
+  border-radius: $radio-sm;
+  background: rgba($solar, 0.08);
+  color: $solar-claro;
+  font-family: $font-mono;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+
+  &--chico {
+    font-size: 0.95rem;
+    padding: 0.15rem 0.6rem;
+    margin: 0;
+  }
+}
+
+// --- Reservas guardadas -------------------------------------------------------
+.reservas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.reserva {
+  border: 1px solid $linea;
+  background: $panel;
+  padding: 1.35rem;
+
+  &__cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $linea;
+
+    p {
+      margin: 0;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: $muted;
+    }
+  }
+
+  &__lista {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: grid;
+    gap: 0.6rem;
+
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.35rem 1rem;
+      font-size: 0.9rem;
+      color: $hielo-suave;
+
+      span {
+        font-family: $font-mono;
+        color: $muted;
+        font-size: 0.84rem;
+      }
+    }
+  }
+
+  &__pie {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid $linea;
+  }
+
+  &__total {
+    margin: 0;
+    font-family: $font-mono;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $glacier;
+  }
+}

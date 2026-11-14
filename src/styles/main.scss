@@ -1,0 +1,52 @@
+// Rumbo Sur — punto de entrada de estilos.
+// Bootstrap 5 aporta la rejilla, utilidades y resets; el sistema visual propio
+// (paleta "Eclipse Solar", tipografía editorial y movimiento) vive en los
+// parciales de esta carpeta. El orden importa: primero la base, después los
+// componentes y por último el pie.
+
+@use "sass:map";
+@use "tokens" as *;
+
+@use "bootstrap/scss/bootstrap" with (
+  $primary: $solar,
+  $secondary: $muted,
+  $body-bg: $abyss,
+  $body-color: $glacier,
+  $font-family-base: $font-body,
+  $font-size-base: 1rem,
+  $headings-font-family: $font-display,
+  $link-color: $glacier,
+  $link-decoration: none,
+  $link-hover-color: $solar-claro,
+  $border-color: $linea,
+  $border-radius: 6px,
+  $grid-gutter-width: 1.75rem,
+  $enable-smooth-scroll: false,
+  $enable-shadows: false,
+  $container-max-widths: (
+    sm: 540px,
+    md: 760px,
+    lg: 1000px,
+    xl: 1180px,
+    xxl: 1320px,
+  )
+);
+
+@use "base";
+@use "motion";
+@use "botones";
+@use "formularios";
+@use "cabecera";
+@use "portada";
+@use "secciones";
+@use "gente";
+@use "tarjetas";
+@use "filtros";
+@use "detalle";
+@use "checkout";
+@use "pie";
+
+// Rejilla del sitio: mismo margen lateral que Bootstrap, algo más de aire.
+.container {
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}

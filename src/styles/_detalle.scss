@@ -1,0 +1,379 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+// --- Portada del detalle ------------------------------------------------------
+.detalle-portada {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(430px, 68vh, 660px);
+  padding-top: $alto-cabecera;
+  overflow: hidden;
+
+  // Doble clase a propósito: gana sobre cualquier utilidad de la capa de imágenes.
+  & &__foto {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      transform: scale(1.02);
+      animation: flotar 22s ease-in-out infinite;
+    }
+  }
+
+  &__velo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba($abyss, 0.68) 0%, rgba($abyss, 0.22) 35%, rgba($abyss, 0.95) 100%);
+  }
+
+  &__texto {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(2rem, 4vw, 3rem);
+  }
+
+  &__titulo {
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin: 0.8rem 0 0.9rem;
+    max-width: 20ch;
+  }
+
+  &__pies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $hielo-suave;
+  }
+}
+
+.volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid $linea-fuerte;
+  border-radius: 999px;
+  background: rgba($abyss, 0.55);
+  backdrop-filter: blur(8px);
+  color: $glacier;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 0.3s $ease, color 0.3s $ease;
+
+  &:hover {
+    border-color: $solar;
+    color: $solar;
+  }
+}
+
+// --- Cuerpo en dos columnas ---------------------------------------------------
+.detalle {
+  &__grilla {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+
+    @include desde(lg) {
+      grid-template-columns: minmax(0, 1fr) 400px;
+      align-items: start;
+    }
+  }
+
+  &__resumen {
+    font-size: clamp(1.08rem, 1.5vw, 1.32rem);
+    line-height: 1.6;
+    color: $hielo-suave;
+  }
+
+  &__datos {
+    display: grid;
+    gap: 1px;
+    margin-block: 2rem;
+    border: 1px solid $linea;
+    background: $linea;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @include desde(sm) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &__info h2 {
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    margin: 2.4rem 0 1rem;
+  }
+}
+
+.dato {
+  background: $abyss-2;
+  padding: 1rem 1.1rem;
+
+  span {
+    @include mayusculas(0.58rem);
+    color: $muted;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  strong {
+    font-family: $font-display;
+    font-size: 1.12rem;
+    font-weight: 400;
+  }
+}
+
+.lista-check {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+
+  li {
+    position: relative;
+    padding-left: 2rem;
+    color: $hielo-suave;
+    font-size: 0.94rem;
+
+    &::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      width: 1.35rem;
+      height: 1.35rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba($solar, 0.4);
+      border-radius: 50%;
+      color: $solar;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.itinerario {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 1px solid $linea;
+
+  li {
+    position: relative;
+    padding: 0 0 1.4rem 1.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 0.45rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: $abyss;
+      border: 1px solid $solar;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__dia {
+    display: block;
+    font-family: $font-mono;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $solar;
+    margin-bottom: 0.2rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.94rem;
+  }
+}
+
+// --- Cotizador ----------------------------------------------------------------
+.cotizador {
+  display: grid;
+  gap: 1.15rem;
+  padding: 1.5rem;
+  border: 1px solid $linea-fuerte;
+  background: linear-gradient(180deg, $panel 0%, $abyss-2 100%);
+  box-shadow: $sombra;
+
+  @include desde(lg) {
+    position: sticky;
+    top: $alto-cabecera + 24px;
+  }
+
+  &__precio {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0;
+
+    strong {
+      font-family: $font-display;
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+
+    span {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: $muted;
+    }
+  }
+
+  &__titulo {
+    font-family: $font-display;
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  &__nota {
+    margin: 0;
+    font-size: 0.75rem;
+    color: $muted;
+    text-align: center;
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.45rem;
+    min-width: 0;
+  }
+
+  legend {
+    @include mayusculas(0.6rem);
+    color: $muted;
+    margin-bottom: 0.5rem;
+  }
+
+  &__fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  padding: 0.62rem 0.8rem;
+  border: 1px solid $linea;
+  border-radius: $radio-sm;
+  font-size: 0.88rem;
+  color: $hielo-suave;
+  cursor: pointer;
+  transition: border-color 0.25s $ease, background 0.25s $ease;
+
+  input {
+    accent-color: $solar;
+    flex: 0 0 auto;
+  }
+
+  &__fecha {
+    font-family: $font-mono;
+    font-size: 0.82rem;
+  }
+
+  &--activa {
+    border-color: $solar;
+    background: rgba($solar, 0.08);
+    color: $glacier;
+  }
+
+  &:hover {
+    border-color: $linea-fuerte;
+  }
+}
+
+.etiqueta-alta {
+  margin-left: auto;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  background: rgba($solar, 0.16);
+  color: $solar-claro;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.desglose {
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+  padding-block: 0.95rem;
+  border-block: 1px solid $linea;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.88rem;
+  }
+
+  dt {
+    color: $muted;
+    font-weight: 400;
+  }
+
+  dd {
+    margin: 0;
+    font-family: $font-mono;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__descuento dd {
+    color: $exito;
+  }
+
+  &__total {
+    margin-top: 0.4rem;
+    padding-top: 0.6rem;
+    border-top: 1px dashed $linea;
+
+    dt,
+    dd {
+      color: $glacier;
+      font-size: 1.15rem;
+      font-weight: 600;
+      font-family: $font-body;
+    }
+
+    dd {
+      font-family: $font-mono;
+    }
+  }
+}
+
+.relacionados {
+  border-top: 1px solid $linea;
+  padding-block: clamp(3rem, 6vw, 5rem);
+}

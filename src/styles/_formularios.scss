@@ -1,0 +1,184 @@
+@use "tokens" as *;
+@use "mixins" as *;
+
+// Controles compartidos por buscador de catálogo, cotizador y reserva.
+.campo {
+  display: grid;
+  gap: 0.38rem;
+  min-width: 0;
+
+  > span,
+  > label {
+    @include mayusculas(0.6rem);
+    color: $muted;
+  }
+
+  input,
+  select,
+  textarea {
+    @include control;
+  }
+
+  select {
+    appearance: none;
+    padding-right: 2.4rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%239aa8b6' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  option {
+    background: $panel;
+    color: $glacier;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 96px;
+  }
+
+  &--error {
+    input,
+    select,
+    textarea {
+      border-color: rgba($peligro, 0.7);
+      background: rgba($peligro, 0.05);
+    }
+  }
+
+  &__error {
+    margin: 0;
+    font-size: 0.78rem;
+    color: $peligro;
+  }
+
+  &--ancho {
+    grid-column: 1 / -1;
+  }
+}
+
+.campo-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  color: $muted;
+  cursor: pointer;
+
+  input {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: $solar;
+  }
+
+  &--error {
+    color: $peligro;
+
+    input {
+      outline: 2px solid rgba($peligro, 0.6);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Conmutador segmentado (habitación)
+.segmentado {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  padding: 3px;
+  background: rgba(242, 245, 247, 0.05);
+  border: 1px solid $linea;
+  border-radius: 999px;
+
+  label {
+    position: relative;
+    text-align: center;
+    padding: 0.5rem 0.35rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: $muted;
+    cursor: pointer;
+    transition: background 0.3s $ease, color 0.3s $ease;
+
+    &.activo {
+      background: $glacier;
+      color: $ink;
+    }
+
+    &:focus-within {
+      @include foco;
+    }
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// Contador de viajeros
+.contador-campo {
+  display: grid;
+  gap: 0.38rem;
+
+  > span {
+    @include mayusculas(0.6rem);
+    color: $muted;
+  }
+
+  &__controles {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.28rem;
+    border: 1px solid $linea;
+    border-radius: $radio-sm;
+    background: rgba(242, 245, 247, 0.04);
+
+    button {
+      width: 2.1rem;
+      height: 2.1rem;
+      border: 1px solid $linea;
+      border-radius: 4px;
+      background: rgba(242, 245, 247, 0.05);
+      color: $glacier;
+      font-size: 1.05rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.2s $ease, color 0.2s $ease, border-color 0.2s;
+
+      &:hover:not(:disabled) {
+        background: $glacier;
+        color: $ink;
+        border-color: $glacier;
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+    }
+
+    output {
+      font-family: $font-mono;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  }
+}
+
+.errores {
+  margin: 0;
+  padding: 0.75rem 1rem 0.75rem 1.9rem;
+  border: 1px solid rgba($peligro, 0.4);
+  border-radius: $radio-sm;
+  background: rgba($peligro, 0.08);
+  color: $peligro;
+  font-size: 0.85rem;
+}

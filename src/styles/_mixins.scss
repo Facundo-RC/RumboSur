@@ -1,0 +1,68 @@
+@use "sass:map";
+@use "tokens" as *;
+
+// Breakpoint mobile-first: @include desde(md) { ... }
+@mixin desde($punto) {
+  @media (min-width: map.get($puntos, $punto)) {
+    @content;
+  }
+}
+
+@mixin foco {
+  outline: 2px solid $solar;
+  outline-offset: 3px;
+}
+
+// Vidrio esmerilado sobre el mar profundo (navegación, buscador, filtros).
+@mixin vidrio($alpha: 0.62, $blur: 18px) {
+  background: rgba($abyss, $alpha);
+  border: 1px solid $linea;
+  backdrop-filter: blur($blur) saturate(140%);
+  -webkit-backdrop-filter: blur($blur) saturate(140%);
+}
+
+@mixin mayusculas($size: 0.68rem) {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: $size;
+  font-weight: 600;
+}
+
+@mixin filete-superior {
+  border-top: 1px solid $linea;
+}
+
+// Control de formulario base del sistema.
+@mixin control {
+  width: 100%;
+  background: rgba($glacier, 0.04);
+  border: 1px solid $linea;
+  border-radius: $radio-sm;
+  color: $glacier;
+  padding: 0.78rem 1rem;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  transition: border-color 0.25s $ease, background 0.25s $ease;
+
+  &::placeholder {
+    color: rgba($glacier, 0.38);
+  }
+
+  &:hover {
+    border-color: $linea-fuerte;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $solar;
+    background: rgba($glacier, 0.07);
+    box-shadow: 0 0 0 3px rgba($solar, 0.12);
+  }
+}
+
+@mixin foto-llena {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

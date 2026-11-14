@@ -1,0 +1,45 @@
+// Design tokens — "Sol de mediodía": mar turquesa, mango, coral y arena.
+// Todo el sistema visual se deriva de acá: si cambia un valor, cambia el sitio entero.
+
+// --- Color -------------------------------------------------------------------
+$abyss: #062a3a; // fondo principal, el mar profundo pero luminoso
+$abyss-2: #083445; // fondo alterno de secciones
+$panel: #0b4152; // superficies elevadas (tarjetas, formularios)
+$panel-2: #11525f;
+$ink: #04222c; // tinta sobre el sol (texto de botones y sobre arena)
+$glacier: #f6fdfa; // texto principal, la espuma
+$hielo-suave: #d6eff0; // texto secundario de alta jerarquía
+$muted: #a9cbd2; // texto de apoyo (contraste AA sobre $abyss)
+$subzero: #4d7d88; // líneas internas de componentes claros
+$solar: #ffb03a; // acento: el sol alto, mango
+$solar-claro: #ffd27a;
+$solar-hondo: #d9820f;
+$coral: #ff6b5b; // acento cálido: corazones, etiquetas
+$turquesa: #2fd4bd; // acento fresco: detalles, estados
+$cielo: #63c8f0;
+$arena: #fff6e8; // secciones claras, cálidas
+$exito: #45d18e;
+$peligro: #ff6b6b;
+
+$linea: rgba(246, 253, 250, 0.14);
+$linea-fuerte: rgba(246, 253, 250, 0.3);
+
+// --- Tipografía --------------------------------------------------------------
+$font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+$font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+// --- Medidas -----------------------------------------------------------------
+$ancho-max: 1320px;
+$alto-cabecera: 78px;
+$radio: 14px;
+$radio-sm: 6px;
+$ease: cubic-bezier(0.16, 1, 0.3, 1);
+$sombra: 0 40px 90px -32px rgba(0, 0, 0, 0.9);
+
+$puntos: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
